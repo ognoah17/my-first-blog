@@ -1,3 +1,50 @@
+Start server:
 myvenv\Scripts\activate
-
 python manage.py runserver 
+
+
+if cant rememeber username:
+1. terminal in venv
+2. User.objects.all()
+
+
+Add blog posts:
+1. 
+Post.objects.create(author, title, text)
+
+
+Filter posts by condition:
+1. 
+Post.objects.filter(
+     author
+     title__contains (must use 2 underscore when using condition)
+     etc
+)
+
+
+Post blog posts to website:
+1.
+post = Post.objects.get(title='Title of Post')
+2.
+post.publish()
+3. Verify with
+Post.objects.filter(published_date__lte=timezone.now()) 
+
+
+Ordering objects:
+1.
+Post.objects.order_by('(-)created_date') (default old to new, -= new to old)
+
+
+Chaining queries:
+1. Combine by priority
+Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date)
+Left to right priority execution, first FILTERS out date published then ORDERS by date published
+
+
+When sending to git in terminal:
+1. cd to repo (djangogirls)
+2. git add .
+3. git status
+4. git commit with message
+5. git push 
